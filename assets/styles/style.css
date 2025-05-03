@@ -13,6 +13,9 @@ body {
     font-family: "RedHatText";
     background-color: hsl(20, 50%, 98%);
 }
+
+
+
 .main {
     display: flex;
     justify-content: center;
@@ -50,36 +53,99 @@ a{
     flex-direction: column;
     padding-bottom: 10px;
 }
-.container div {
+.buts {
     display: flex;
     justify-content: center;
 }
 
 
 
-.but-add-tocard {
+.but-addToCard {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     cursor: pointer;
-
+    
     background-color: white;
     
-
     transform: translateY(-20px);
     
     font-family: "RedHatText";
     font-weight: 600;
+    font-size: 14px;
 
     border-radius: 30px;
     border: 1px solid hsl(14, 86%, 42%);
 
+    width: 160px;
     padding: 10px;
     padding-inline: 25px;
 }
-.but-add-tocard:hover {
+.but-addToCard:hover {
     color: hsl(14, 86%, 42%);
+}
+.but-addToCard[data-visible="show"]{
+    display: flex;
+}
+.but-addToCard[data-visible="hide"]{
+    display: none;
+}
+
+.buts-addOrDelete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: hsl(14, 86%, 42%);
+
+    transform: translateY(-20px);
+
+    font-weight: 600;
+    font-size: 14px;
+
+    border-radius: 30px;
+
+    width: 140px;
+    padding-inline: 10px;
+    height: 42px;
+}
+.buts-addOrDelete p {
+    color: white;
+}
+.buts-addOrDelete[data-visible="show"]{
+    display: flex;
+}
+.buts-addOrDelete[data-visible="hide"]{
+    display: none;
+}
+
+.plus_minus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.747);
+
+    width: 20px;
+    height: 20px;
+
+    background-color: hsl(14, 86%, 42%);
+}
+.plus_minus:hover {
+    background-color: rgba(255, 255, 255, 0.219);
+}
+
+
+.test {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 300px;
+    height: 42px;
 }
 
 
@@ -169,8 +235,12 @@ a{
     border: 1px solid rgba(0, 0, 0, 0.473);
 }
 
-
-.order {
+#non-order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#have-order {
     display: flex;
     justify-content: space-between;
 
