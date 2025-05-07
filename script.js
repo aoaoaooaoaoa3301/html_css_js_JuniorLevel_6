@@ -8,11 +8,23 @@ fetch('data.json')
     
     
 function main(data){
+    const but_confirmOrder = document.querySelector(".confirmOrder");
+    const but_createNewOrder = document.querySelector(".createNewOrder");
+
     add_toCart(data);
     addOrDeleteItem(data);
+
+    but_confirmOrder.addEventListener('click', function(){
+        createMessage(data);
+    });
+    but_createNewOrder.addEventListener('click', function(){
+        location.reload();
+    });
 }
 
 var cartItems = [];
+var lastOrder = 0;
+var flagNotification = true;
 
 function crateItems(data){
     const items = document.getElementById('items');
@@ -53,7 +65,6 @@ function add_toCart(data){
     const buts_addToCart = document.querySelectorAll(".but-addToCard");
     const products_inCart = document.getElementById("products-inCart");
 
-
     buts_addToCart.forEach(but => {
         but.addEventListener('click', function(){
 
@@ -77,7 +88,7 @@ function add_toCart(data){
             <button class="but-remove" id="but-remove-inCart"><img src="assets/images/icon-remove-item.svg" alt=""></button>
             `;
             products_inCart.appendChild(item_inCart);
-
+            
 
             but.dataset.visible = "hide";
             but.parentElement.querySelector(".buts-addOrDelete").dataset.visible = "show";
@@ -157,7 +168,10 @@ function updateOrder(){
         order.id = "non-order";
         order.innerHTML = `
             <img src="assets/images/illustration-empty-cart.svg" alt="">
+            <p>Your added items will appear here</p>
         `;
+        deleteConfirmOrder();
+        flagNotification = true;
     }
     else {
         order.id = "have-order";
@@ -166,6 +180,12 @@ function updateOrder(){
             <p class="numOrder"></p>
         `;
         order.querySelector(".numOrder").textContent = `$${summ.toFixed(2)}`;
+        lastOrder = summ;
+
+        if(flagNotification){
+            addConfirmOrder();
+            flagNotification = false;
+        };
     }
     updateH2()
 
@@ -182,4 +202,53 @@ function updateH2(){
     if(count == 0){yourCart.textContent = `Your Cart`;}
 
     else {yourCart.textContent = `Your Cart (${count})`;}
+}
+
+function createMessage(data){
+    const products_inCart = document.getElementById("products-inCart");
+    const message_parrent = document.getElementById("products-inMessage");
+    const message = document.querySelector(".message");
+
+    const products_order = document.querySelector(".products-order");
+    const order = document.createElement("div");
+    order.classList.add("order-inMessage");
+
+    cartItems.forEach(el => {
+        if(el.count != 0){
+            const item_message = document.createElement("div");
+            item_message.classList.add("item-inMessage");
+            item_message.id = `nom_${el.id}`;
+            item_message.innerHTML = `
+                  <div class="info-inMessage">
+                    <img class="img-inMessage" src="${data[el.id].image.desktop}" alt="">
+                    <div>
+                      <p class="name-inMessage">${data[el.id].name}</p>
+                      <div class="info-inMessage">
+                        <p class="count-inMessage">${el.count}x</p>
+                        <p class="price-inMessage">@$${data[el.id].price.toFixed(2)}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="price_inMessage">$${(data[el.id].price * el.count).toFixed(2)}</p>  
+            `;
+            message_parrent.appendChild(item_message);
+        }
+    });
+    message.dataset.visible = "show";
+
+    order.innerHTML = `
+        <p class="textOrder">Order total</p>
+        <p class="numOrder">$${lastOrder.toFixed(2)}</p>
+    `;
+    products_order.appendChild(order);
+}
+
+function addConfirmOrder(){
+    const div = document.getElementById("but-notification");
+    div.dataset.visible = "show";
+    console.log(div);
+}
+function deleteConfirmOrder(){
+    const div = document.getElementById("but-notification");
+    div.dataset.visible = "hide";
 }

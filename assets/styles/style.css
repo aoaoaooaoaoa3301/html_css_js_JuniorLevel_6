@@ -21,7 +21,7 @@ body {
     justify-content: center;
     gap: 30px;
 
-    margin-top: 100px;
+    padding-top: 100px;
 }
 h1 {
     font-size: 40px;
@@ -182,8 +182,6 @@ a{
 #products-inCart{
     display: flex;
     flex-direction: column;
-
-    padding-bottom: 30px;
 }
 .item-inCart {
     display: flex;
@@ -239,12 +237,16 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 #have-order {
     display: flex;
     justify-content: space-between;
 
     align-items:center;
+}
+.order{
+    padding-top: 20px;
 }
 .textOrder {
     font-size: 14px;
@@ -271,7 +273,16 @@ a{
     font-size: 14px;
 }
 
-
+#but-notification{
+    display: flex;
+    flex-direction: column;
+}
+#but-notification[data-visible="show"]{
+    display: flex;
+}
+#but-notification[data-visible="hide"]{
+    display: none;
+}
 .confirmOrder{
     padding: 20px;
     margin-top: 10px;
@@ -288,5 +299,118 @@ a{
     background-color: rgb(219, 51, 0);
 }
 .confirmOrder:hover {
+    background-color: rgb(179, 42, 0);
+}
+
+.message {
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+
+    background-color:rgba(0, 0, 0, 0.285);
+}
+.message[data-visible="show"]{
+    display: flex;
+}
+.message[data-visible="hide"]{
+    display: none;
+}
+.message-content {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+
+    padding: 30px;
+    width: 500px;
+
+    border-radius: 12px;
+}
+.message-text {
+    font-size: 14px;
+    color: rgb(168, 168, 168);
+
+    padding-bottom: 30px;
+}
+
+#products-inMessage {
+    display: flex;
+    flex-direction: column;
+}
+
+.products-order{
+    padding: 20px;
+    padding-top: 0;
+
+    background-color: hsl(20, 50%, 98%);
+}
+.item-inMessage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.082);
+}
+.price_inMessage {
+    font-weight: 600;
+}
+.img-inMessage {
+    width: 50px;
+    border-radius: 8px;
+}
+.info-inMessage {
+    gap: 10px;
+    display: flex;
+}
+
+.name-inMessage {
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.count-inMessage {
+    color: rgb(219, 51, 0);
+    font-weight: 600;
+    padding-right: 10px;
+}
+.price-inMessage {
+    color: rgba(0, 0, 0, 0.644);
+}
+.priceSum-iinMessage {
+    color: rgba(0, 0, 0, 0.644);
+    font-weight: 600;
+}
+
+.order-inMessage {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+
+    padding-top: 20px;
+}
+
+.createNewOrder{
+    padding: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+
+    border: 0;
+    border-radius: 30px;
+
+    font-family: "RedHatText";
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+
+    background-color: rgb(219, 51, 0);
+}
+.createNewOrder:hover {
     background-color: rgb(179, 42, 0);
 }

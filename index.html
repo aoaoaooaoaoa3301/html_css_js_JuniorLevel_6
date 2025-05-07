@@ -10,6 +10,24 @@
 </head>
 <body>
 
+  <div class="message" data-visible="hide">
+    <div class="message-content">
+      <div>
+        <img src="assets/images/icon-order-confirmed.svg" alt="">
+      </div>
+      <h1>Order Confirmed</h1>
+      <p class="message-text">We hope you enjoy your food!</p>
+
+      <div class="products-order">
+        <div id="products-inMessage">
+          
+        </div>
+        
+      </div>
+      <button class="createNewOrder">Create new Order</button>
+    </div>
+  </div>
+
   <div class="main">
     <div class="products">
       <h1>Desserts</h1>
@@ -28,26 +46,24 @@
 
         <div class="order" id="non-order">
           <img src="assets/images/illustration-empty-cart.svg" alt="">
+          <p>Your added items will appear here</p>
         </div>
-
-        <div class="notification">
+        <div id = "but-notification" data-visible="hide">
+          <div class="notification">
           <img src="assets/images/icon-carbon-neutral.svg" alt="">
           <p class="text-notification">This is a <a>carbon-neutral</a> delivery</p>
         </div>
 
         <button class="confirmOrder">Confirm Order</button>
+        </div>
+
+        </div>
       </div>
     </div>
   </div>
 
 
 
-
-  <div class="test">
-    <div>afafaf</div>
-    <div>afafaf</div>
-    <div>afafaf</div>
-  </div>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
     Coded by <a href="https://github.com/aoaoaooaoaoa3301">aoaoaoaoao</a>.
